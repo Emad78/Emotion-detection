@@ -10,7 +10,13 @@ class Preprocessing:
         return normalizer.normalize(text)
 
     def remove_emojis(self, text):
-        pass
+        pattern = re.compile(pattern = "["
+        u"\U0001F600-\U0001F64F"  # emoticons
+        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+        u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                           "]+", flags = re.UNICODE)
+        
+        return pattern.sub('', text)
     
     def remove_english_words(self, text):
         pass
