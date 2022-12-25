@@ -46,3 +46,8 @@ class Preprocessing:
 
     def remove_character_duplications(self, word):
         return re.sub(r'(.)\1+', r'\1', word)
+    
+    def remove_url(self, text):
+        text =  re.sub(r'http\S+', '', text)
+        text = re.sub(r'www\S+', '', text)
+        return text
