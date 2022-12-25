@@ -44,5 +44,9 @@ class Preprocessing:
         stop_words = hazm.stopwords_list()
         return list(filter(lambda x: x not in stop_words, words))
 
-    def remove_char_duplicates(self, word):
-        pass
+    def remove_character_duplications(self, word):
+        if len(word) < 3:
+            return word
+        if word[0] == word[1] and word[0] == word[2]:
+            return self.remove_char_duplicates(word[1:])
+        return word[0]+self.remove_char_duplicates(word[1:])
