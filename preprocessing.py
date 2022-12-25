@@ -4,8 +4,10 @@ import re
 class Preprocessing:
     def __init__(self):
         pass
+
     def normalize(self, text):
-        pass
+        normalizer = hazm.Normalizer()
+        return normalizer.normalize(text)
 
     def remove_emojis(self, text):
         pass
@@ -23,10 +25,12 @@ class Preprocessing:
         pass
 
     def sentence_tokenize(self, text):
-        pass
+        tokenizer = hazm.SentenceTokenizer()
+        return tokenizer.tokenize(text)
 
     def word_tokenize(self, sentence):
-        pass
+        tokenizer = hazm.WordTokenizer()
+        return tokenizer.tokenize(sentence)
 
     def remove_stop_words(self, words):
         pass
