@@ -45,7 +45,7 @@ class Preprocessing:
         return list(filter(lambda x: x not in stop_words, words))
 
     def remove_character_duplications(self, word):
-        return re.sub(r'(.)\1+', r'\1', word)
+        return re.sub(r'(.)\1\1+', r'\1', word)
     
     def remove_url(self, text):
         text =  re.sub(r'http\S+', '', text)
