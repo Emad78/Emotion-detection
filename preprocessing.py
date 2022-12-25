@@ -41,7 +41,8 @@ class Preprocessing:
         return tokenizer.tokenize(sentence)
 
     def remove_stop_words(self, words):
-        pass
+        stop_words = hazm.stopwords_list()
+        return list(filter(lambda x: x not in stop_words, words))
 
     def remove_char_duplicates(self, word):
         pass
