@@ -19,7 +19,7 @@ class Preprocessing:
         return pattern.sub('', text)
     
     def remove_english_words(self, text):
-        pass
+        return  re.sub('\s*[A-Za-z]+\b', '' , text)
 
     def remove_hashtags(self, text):
         text = re.sub("#[A-Za-z0-9_]+","", text)
