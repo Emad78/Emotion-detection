@@ -42,7 +42,7 @@ class Preprocessing:
 
     def remove_stop_words(self, words):
         stop_words = hazm.stopwords_list()
-        return list(filter(lambda x: x not in stop_words, words))
+        return list(filter(lambda x: x not in stop_words and len(x) > 1, words))
 
     def remove_character_duplications(self, word):
         return re.sub(r'(.)\1\1+', r'\1', word)
