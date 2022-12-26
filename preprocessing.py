@@ -1,5 +1,6 @@
 import hazm
 import re
+PUNCTUATIONS = ['.', '؟', '!', '،', ':', '؛', '(', ')']
 
 class Preprocessing:
     def __init__(self):
@@ -50,6 +51,10 @@ class Preprocessing:
         text =  re.sub(r'http\S+', '', text)
         text = re.sub(r'www\S+', '', text)
         return text
+    
+    def remove_punctuations(self, words):
+        punctuations = PUNCTUATIONS
+        return list(filter(lambda x: x not in punctuations, words))
     
     def find_text_words(self, text):
         sentences = self.sentence_tokenize(text)
