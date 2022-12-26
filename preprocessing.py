@@ -50,3 +50,11 @@ class Preprocessing:
         text =  re.sub(r'http\S+', '', text)
         text = re.sub(r'www\S+', '', text)
         return text
+    
+    def find_text_words(self, text):
+        sentences = self.sentence_tokenize(text)
+        sentences_words = list(map(self.word_tokenize, sentences))
+        words = []
+        for sentence in sentences_words:
+            words += sentence
+        return words
