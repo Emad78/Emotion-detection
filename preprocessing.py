@@ -33,12 +33,11 @@ class Preprocessing:
         return re.sub(r"@[A-Za-z0-9_]+","", text)
 
     def sentence_tokenize(self, text):
-        tokenizer = hazm.SentenceTokenizer()
-        return tokenizer.tokenize(text)
+        pattern = re.compile(r'[.!؟؛?\n][ ]*')
+        return pattern.split(text)
 
     def word_tokenize(self, sentence):
-        tokenizer = hazm.WordTokenizer()
-        return tokenizer.tokenize(sentence)
+        return re.findall(r"[\w']+", sentence)
 
     def remove_stop_words(self, words):
         stop_words = hazm.stopwords_list()
