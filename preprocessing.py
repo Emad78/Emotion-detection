@@ -41,7 +41,12 @@ class Preprocessing:
         return re.findall(r"[\w']+", sentence)
 
     def remove_stop_words(self, words):
-        stop_words = hazm.stopwords_list()
+
+        stop_words = []
+        fin=open('resources/stopword.txt',encoding='utf8')
+        for word in fin.readlines():
+            stop_words.append(word.replace('\n', '').lower().replace('\ufeff', '').lower().replace('\ufeff', '').upper().replace('ك' , 'ک').replace(" " ,""))
+
         return list(filter(lambda x: x not in stop_words and len(x) > 1, words))
 
     def remove_character_duplications(self, word):
