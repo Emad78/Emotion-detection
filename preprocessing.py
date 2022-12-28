@@ -1,5 +1,6 @@
 import hazm
 import re
+import emoji
 PUNCTUATIONS = ['.', '؟', '!', '،', ':', '؛', '(', ')']
 
 class Preprocessing:
@@ -15,13 +16,10 @@ class Preprocessing:
         return normalizer.normalize(text)
 
     def remove_emojis(self, text):
-        pattern = re.compile(pattern = "["
-        u"\U0001F600-\U0001F64F"  # emoticons
-        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-        u"\U0001F680-\U0001F6FF"  # transport & map symbols
-                           "]+", flags = re.UNICODE)
-        
-        return pattern.sub('', text)
+        return emoji.replace_emoji(text)
+    
+    def convert_emoji_to_text(self, text):
+        return emoji.demojize(text)
     
     def remove_english_words(self, text):
         return re.sub(r'[A-Za-z]+', '' , text)
@@ -86,3 +84,4 @@ class Preprocessing:
         sentences_words = list(map(self.word_tokenize, sentences)) 
         sentences_words = list(filter(lambda x: len(x)>0, sentences_words))       
         return sentences_words
+
