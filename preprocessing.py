@@ -79,6 +79,9 @@ class Preprocessing:
         punctuations = PUNCTUATIONS
         return list(filter(lambda x: x not in punctuations, words))
     
+    def remove_number(self, text):
+        return re.sub("\d+", " ", text)
+    
     def find_sentences_words(self, text):
         sentences = self.sentence_tokenize(text)
         sentences_words = list(map(self.word_tokenize, sentences)) 
