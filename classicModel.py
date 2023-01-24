@@ -34,6 +34,20 @@ def prepare_data(train, test):
 
   return x_train, y_train, x_test, y_test
 
+
+def create_svm(x, y):
+    svm = SVC(kernel='rbf')
+    svm.fit(x, y)
+    return svm
+
+def create_knn(x, y, k=25):
+    knn = KNeighborsClassifier(n_neighbors=25)
+    knn.fit(x, y)
+
+def create_mlp(x, y):
+    mlp = MLPClassifier(random_state=10, max_iter=1000)
+    mlp.fit(x, y)
+
 data = pd.read_csv("drive/MyDrive/Work/CleanData_arman.csv")
 data = data[['text', 'label']]
 
@@ -62,3 +76,4 @@ except:
     fast_text1 = get_embedding('fasttext-commoncrawl-bin')
     fast_text1.model.save_model('resources/embedding/fast_text1.model')
 
+x, y, x_test, y_test = prepare_data(train, test)
