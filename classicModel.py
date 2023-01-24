@@ -47,6 +47,11 @@ def create_knn(x, y, k=25):
 def create_mlp(x, y):
     mlp = MLPClassifier(random_state=10, max_iter=1000)
     mlp.fit(x, y)
+    
+def evaluation(model, x_test, y_test):
+    pre = model.predict(x_test)
+    print(classification_report(y_test, pre))
+    accuracy_score(y_test, pre)
 
 data = pd.read_csv("drive/MyDrive/Work/CleanData_arman.csv")
 data = data[['text', 'label']]
