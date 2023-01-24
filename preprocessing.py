@@ -1,7 +1,8 @@
 import hazm
 import re
 import emoji
-PUNCTUATIONS = ['.', '؟', '!', '،', ':', '؛', '(', ')']
+PUNCTUATIONS = ['.', '؟', '!', '،', ':', '؛', '(', ')', '*', '/']
+
 
 class Preprocessing:
     def __init__(self):
@@ -87,4 +88,19 @@ class Preprocessing:
         sentences_words = list(map(self.word_tokenize, sentences)) 
         sentences_words = list(filter(lambda x: len(x)>0, sentences_words))       
         return sentences_words
+
+    def lemmatizer(self, word):
+        lemmatizer = hazm.Lemmatizer()
+        return lemmatizer.lemmatize(word)
+
+    def lemmatization_sentences(self, sentences):
+        new_sentences = []
+        for sentence in sentences:
+            new_sentences.append(list(map(self.lemmatizer, sentence)))
+        
+        new_sentences = list(filter(lambda x: len(x)>0, new_sentences))
+        return new_sentences
+
+
+
 
