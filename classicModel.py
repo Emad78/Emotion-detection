@@ -11,6 +11,29 @@ from sklearn.model_selection import cross_val_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 
+
+
+def prepare_data(train, test):
+  enc = LabelBinarizer()
+  
+  x_train = list(train['text'].apply(fast_text0.get_sentence_vector))
+  x_test = list(test['text'].apply(fast_text0.get_sentence_vector))
+  
+  x_train1 = list(train['text'].apply(fast_text1.embedding_text))
+  x_test1 = list(test['text'].apply(fast_text1.embedding_text))
+  
+  for i in range(len(x_train)):
+    x_train[i] = list(np.concatenate((x_train[i], x_train1[i]), axis=0))
+
+  for i in range(len(x_test)):
+    x_test[i] = list(np.concatenate((x_test[i], x_test1[i]), axis=0))
+
+
+  y_train = (train['label'])
+  y_test = (test['label'])
+
+  return x_train, y_train, x_test, y_test
+
 data = pd.read_csv("drive/MyDrive/Work/CleanData_arman.csv")
 data = data[['text', 'label']]
 
