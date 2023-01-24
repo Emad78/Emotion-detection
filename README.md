@@ -9,9 +9,7 @@
 - [Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
-  - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
 - [Authors](#authors)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
@@ -19,27 +17,22 @@
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
-# [project_name] <a name="about-project"></a>
-> a decorative picture or a screenshot of the project results.
-> a discription of project in about a paragraph.
-
+# Emotion Detection <a name="about-project"></a>
+This project is used for the detection of emotion in text.  Emotions that can be detected are: Happy, Fear, Sad, Surprise, Hate, Angry, and Natural. The specific use case of this project is the detection of students' emotions in text, but can be used for other purposes.
 ## Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+For this project, we use pandas for data analysis and data cleaning. also, we use Hazm for data cleaning. For the detection model, we use a neural network with TensorFlow and machine learning models with scikit-learn packages.
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **[Persian Emotion Detection]**
+- **[Easy usage]**
+- **[different models]**
 
 ## Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
@@ -47,6 +40,11 @@ In order to run this project you need:
 
 ```sh
  !pip install tensorflow
+ !pip install pandas
+ !pip install dadmatools
+ !pip install fasttext
+ !pip install numpy
+ !pip install sklearn
 ```
 
 ### Setup
@@ -55,73 +53,39 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
-```
-
-### Install
-
-Install this project with:
-```sh
-something
+  git clone git@github.com:Emad78/Emotion-detection.git
 ```
 
 
 ### Usage
-
-To run the project, execute the following command:
-
-```sh
-something
-```
-
-### Run tests
-
-To run tests, run the following command:
-
-```sh
-something
-```
+Trained models have been placed in the models directory and can be used for classification. the input of models is the vector of text feature. process of generating an input vector has been shown in the model.py file. the output of models is emotion detected in text.
 
 ## Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/test)
-- Twitter: [@twitterhandle](https://twitter.com/test)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/test)
-
-**Author2**
-
-- GitHub: [@githubhandle](https://github.com/test)
-- Twitter: [@twitterhandle](https://twitter.com/test)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/test)
-
+- GitHub: [@Emad78](https://github.com/Emad78)
 
 ## Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **[API for interaction with models]**
+- [ ] **[UI for interaction with models]**
+- [ ] **[Using better datasets to train models]**
 
 ## Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Emad78/Emotion-detection/issues).
 
 ## Show your support <a name="support"></a>
-
-> Write a message to encourage readers to support your project
 
 If you like this project please give us a ⭐
 
 ## Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
 
-I would like to thank...
+I would like to thank Ms.Arshiya, Ms.Noori, Mr.Eskandarani, and Mr.Jafari for their help and support during this project
 
 ## License <a name="license"></a>
 
