@@ -17,6 +17,38 @@ from sklearn.model_selection import cross_val_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 
+
+def NN_prepare_data(train, temp):
+  enc = LabelBinarizer()
+  test, valid = train_test_split(temp, test_size=0.5)
+
+  x_train = np.array(train['text'].apply(fast_text0.get_sentence_vector))
+  x_test = np.array(test['text'].apply(fast_text0.get_sentence_vector))
+  x_val = np.array(valid['text'].apply(fast_text0.get_sentence_vector))
+
+  x_train1 = np.array(train['text'].apply(fast_text1.embedding_text))
+  x_test1 = np.array(test['text'].apply(fast_text1.embedding_text))
+  x_val1 = np.array(valid['text'].apply(fast_text1.embedding_text))
+
+  for i in range(len(x_train)):
+    x_train[i] = np.concatenate((x_train[i], x_train1[i]), axis=0)
+
+  for i in range(len(x_test)):
+    x_test[i] = np.concatenate((x_test[i], x_test1[i]), axis=0)
+
+  for i in range(len(x_val)):
+    x_val[i] = np.concatenate((x_val[i], x_val1[i]), axis=0)
+
+
+  enc.fit(train['label'])
+  y_train = enc.transform(train['label'])
+  y_test = enc.transform(test['label'])
+  y_val = enc.transform(valid['label'])
+
+  return x_train, y_train, x_test, y_test, x_val, y_val, enc
+
+
+
 data = pd.read_csv("drive/MyDrive/Work/CleanData_arman.csv")
 data = data[['text', 'label']]
 
@@ -44,3 +76,4 @@ try :
 except:
     fast_text1 = get_embedding('fasttext-commoncrawl-bin')
     fast_text1.model.save_model('resources/embedding/fast_text1.model')
+
