@@ -47,13 +47,20 @@ def NN_prepare_data(train, temp):
 
   return x_train, y_train, x_test, y_test, x_val, y_val, enc
 
-def create_model(input_size, output_size):
+def create_NN_model(input_size, output_size):
   model = Sequential()
   model.add(Input(input_size))
   model.add(Dense(10, activation='relu'))
   model.add(Dense(output_size, activation='softmax'))
   model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc'])
   return model
+
+def NN_model(classes, train, test):
+    x, y, x_test, y_test, x_val, y_val, enc = NN_prepare_data(train, test)
+    model = create_NN_model(400, classes)
+    print(model.summary())
+    model.fit(stack(x),y, epochs=80, batch_size=128, validation_data=(stack(x_val), y_val))
+    return model
 
 data = pd.read_csv("drive/MyDrive/Work/CleanData_arman.csv")
 data = data[['text', 'label']]
